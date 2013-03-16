@@ -1,6 +1,10 @@
 Kurjers::Application.routes.draw do
 
-  root :to => 'public#home'
+  get "admins/new"
+
+  root to: 'public#home'
+
+  match '/signup', to: 'admins#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
