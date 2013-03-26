@@ -13,8 +13,10 @@ require 'spec_helper'
 
 describe Admin do
   
-	before { @admin = Admin.new(name: "Example Admin", email: "admin@example.com",
-															password: "example", password_confirmation: "example") }
+	before do
+	 @admin = Admin.new(name: "Example Admin", email: "admin@example.com",
+															password: "example", password_confirmation: "example")
+	end
 
 	subject { @admin }
 
@@ -23,6 +25,7 @@ describe Admin do
 	it { should respond_to(:password_digest) }
 	it { should respond_to(:password) }
 	it { should respond_to(:password_confirmation) }
+	it { should respond_to(:remember_token) }
 	it { should respond_to(:authenticate) }
 
 	it { should be_valid }
@@ -107,5 +110,10 @@ describe Admin do
       it { should_not == admin_for_invalid_password }
       specify { admin_for_invalid_password.should be_false }
     end
+  end
+
+  describe "remember_token" do
+  	before { @admin.save }
+  	its(:remember_token) { should_not be_blank }
   end
 end
