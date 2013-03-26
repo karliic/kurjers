@@ -1,10 +1,13 @@
 Kurjers::Application.routes.draw do
+  get "users/new"
+
   resources :admins
+  resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'public#home'
 
-  match '/signup',  to: 'admins#new'
+  match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
