@@ -1,4 +1,5 @@
 Kurjers::Application.routes.draw do
+<<<<<<< HEAD
   get "users/new"
 
   resources :admins
@@ -10,6 +11,15 @@ Kurjers::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+=======
+  resources :users
+
+  get "users/new"
+
+  root to: 'public#home'
+
+  match '/signup', to: 'users#new'
+>>>>>>> new_state
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
